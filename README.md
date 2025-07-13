@@ -1,109 +1,152 @@
-Tennis Motion Analysis System
-A real-time computer vision system for tennis coaching that compares users' form to professional players and provides immediate visual feedback and personalized guidance for improvement.
-Features
+🎾 Tennis Motion Analysis System
+A real-time computer vision system for tennis coaching that compares a user's form to professional players and delivers immediate, personalized feedback for improvement. This project integrates pose estimation, object detection, and novel movement analysis to assist players in refining their technique.
 
-Real-time pose comparison with professional tennis players
-Two transformation methods to accommodate different body types
-Interactive visual feedback with color-coded joint indicators
-Tennis racket detection using YOLOv8
-Problem segment identification
-Chain-based similarity algorithm for accurate movement analysis
-Detailed feedback with specific joint improvement suggestions
-Timeline visualization for performance review
+✅ Key Features
+Real-time Pose Comparison: Match user movements with professional players frame-by-frame.
 
-Setup Instructions
+Dual Transformation Methods: Adjusts for body type variations using Scaled and Basic transforms.
 
-Create a new virtual environment:
+Interactive Feedback: Visual cues including color-coded joints and directional arrows.
+
+Tennis Racket Detection: YOLOv8-based object detection for racket tracking.
+
+Problem Segment Identification: Highlights where form deviates most significantly.
+
+Chain-Based Similarity Algorithm: Compares key kinematic chains for robust motion analysis.
+
+Joint-specific Feedback: Detailed corrective advice on individual joint movements.
+
+Timeline Visualization: See performance progression and replay problem segments.
+
+⚙️ Setup Instructions
+Create Virtual Environment
+
+bash
+Copy
+Edit
 python -m venv venv
+Activate the Environment
 
-Activate the virtual environment:
+Windows:
 
-Windows: venv\Scripts\activate
-macOS/Linux: source venv/bin/activate
+bash
+Copy
+Edit
+venv\Scripts\activate
+macOS/Linux:
 
+bash
+Copy
+Edit
+source venv/bin/activate
+Install Dependencies
 
-Install dependencies:
+bash
+Copy
+Edit
 pip install -r requirements.txt
-
-
-Environment Requirements
-
+💻 System Requirements
 Python 3.8 or higher
+
 Webcam access
-Sufficient processing power for real-time computer vision (Intel i5 or equivalent recommended)
 
-Dependencies
-The main dependencies include:
+Adequate CPU/GPU for real-time inference (Intel i5 or equivalent recommended)
 
-OpenCV
-MediaPipe
-PyQt6
-Ultralytics (YOLOv8)
-NumPy
-DTAIDistance
+📦 Main Dependencies
+OpenCV – Image and video processing
 
-A complete list is available in the requirements.txt file.
-Usage
+MediaPipe – Pose estimation and landmark tracking
 
-RUN THE MAIN APPLICAITON:
+PyQt6 – GUI framework
+
+Ultralytics YOLOv8 – Racket detection
+
+NumPy – Numerical computing
+
+DTAIDistance – Dynamic Time Warping library
+
+Full list available in requirements.txt.
+
+🚀 Running the Application
+Start the GUI:
+
+bash
+Copy
+Edit
 python gui.py
+Using the System:
 
-WHEN USING THE APPLICATION:
-First upload a video by clicking upload which should open a folder select. Click on the VIDEOS folder
-to see all the options. Click on the proffesional player and shot type you want to hit. 
-Select the options you want and start Comparison and you should be able to see a video feed of your self. 
-MAKE SURE TO SELECT CHAIN BASED SIMILARITY ALGORITHM, as one of the similarity algorithms as the post shot feedback can only work if
-the chain based similairty is selected as one of the algorithms (the other algorithms are only there for comparison sake)
+Upload a video of a professional player via the "Upload" button.
 
-When you are ready to do the tennis shot click start recording and do the shot using the live graphics to guide you
-Now you should see your similairty score (the lower the score the better).
-Next go to the post shot analysis tab to visualise where you shot was wrong. 
+Choose the shot type and player.
 
-Click "Analyze Movement" to see detailed feedback and problem areas
-Use the timeline and problem segment replay to understand specific improvement areas
-You can see actionable feedback for the worst joint, telling you how you should have moved them instea
-Now using that feedback repeat the whole process.
+Select desired options. Ensure you include the Chain-Based Similarity Algorithm for feedback to function correctly.
 
+Start recording your shot with the webcam and follow the real-time visual guidance.
 
+After the shot, check your similarity score (lower is better).
 
+Visit the "Post-Shot Analysis" tab to:
 
+Analyze problematic segments.
 
+Replay key movement issues.
 
+Receive actionable feedback for individual joints.
 
+Use this information to improve and try again.
 
+🧠 System Architecture
+🎛️ Main Interface
+A PyQt6-based GUI providing live feedback, similarity scores, and post-analysis tools.
 
+📐 Pose Estimation
+Utilizes MediaPipe for accurate 33-point skeleton tracking in real-time.
 
+🔍 Similarity Analysis
+Implements a custom chain-based algorithm analyzing four major kinematic chains:
 
+Left/Right Arms
 
+Left/Right Legs
+Includes joint weighting to reflect motion significance.
 
-System Components
-Main Interface
-The PyQt6-based interface provides an intuitive user experience with real-time visual feedback, similarity scores, and detailed analysis tools.
-Pose Estimation
-MediaPipe is used for accurate pose estimation, tracking 33 body landmarks in real-time.
-Similarity Analysis
-A novel chain-based algorithm analyzes movement by considering four kinematic chains (left/right arms and legs) with proper weighting of joint dependencies.
-Transformation Methods
+🧬 Transformation Methods
+Scaled Transform: Matches user body proportions to reference.
 
-Scaled Transform: Adapts the reference skeleton to match user proportions
-Basic Transform: Provides a consistent overlay without scaling
+Basic Transform: Keeps overlay consistent for baseline comparisons.
 
-Racket Detection
-Uses YOLOv8n for efficient tennis racket detection, optimized for real-time performance while maintaining accuracy.
-Feedback Visualization
+🏸 Racket Detection
+YOLOv8n model trained for fast and accurate racket localization in live feed.
 
+📊 Feedback & Visualization
 Transformed skeleton overlays
-Color-coded joint indicators
-Directional correction arrows
-Timeline visualization of similarity
-Problem segment identification and replay
 
-Project Structure
+Color-coded joints indicating deviation severity
 
-SportsMotionGUI.py: Main application with PyQt6 interface
-duelWebCam.py: Video processing and pose estimation
-chainSimilarity.py: Chain-based similarity algorithm
-formVisualisation.py: Visual feedback rendering
-feedback_widget.py: Feedback interface components
-visualization_widgets.py: Visualization widgets for analysis
-similarity_metrics.py: Similarity calculation algorithms
+Directional arrows for corrective movement
+
+Timeline & replay of incorrect segments
+
+🗂️ Project Structure
+File	Description
+SportsMotionGUI.py	Main application and PyQt6 GUI logic
+duelWebCam.py	Live webcam processing and pose tracking
+chainSimilarity.py	Custom chain-based similarity algorithm
+formVisualisation.py	Renders visual feedback overlays
+feedback_widget.py	GUI components for feedback display
+visualization_widgets.py	Timeline and analysis widgets
+similarity_metrics.py	Additional similarity calculation methods
+
+📌 About the Project
+This system was developed as part of my final-year Computer Science project. It showcases practical application of:
+
+Computer Vision
+
+Real-time Inference
+
+GUI Development
+
+Algorithm Design (Chain-Based Similarity)
+
+It is designed to bridge the gap between elite athletic form and amateur practice by providing accessible, intelligent feedback.
