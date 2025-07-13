@@ -139,7 +139,7 @@ visualization_widgets.py	Timeline and analysis widgets
 similarity_metrics.py	Additional similarity calculation methods
 
 📌 About the Project
-This system was developed as part of my final-year Computer Science project. It showcases practical application of:
+ It showcases practical application of:
 
 Computer Vision
 
